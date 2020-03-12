@@ -4,6 +4,7 @@ This is the original source code used for all experiments in the paper "hort-Ter
 TODO: link as soon as the paper has been accepted and published
 
 This repository is organized as follows:
+
 (a) Directories:
 - 'data': contains the preprocessed data
 - 'src\model': contains source code for all models (convLSTM and ARIMA)
