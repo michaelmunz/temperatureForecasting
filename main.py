@@ -64,8 +64,8 @@ cfg.Modelparameter_highlevel['n_epochs'] =1000
 #cfg.Modelparameter_highlevel['dropout'] = 0.5 #0.2,
 #cfg.Modelparameter_highlevel['learningrate'] = 0.00007
 
-tf.reset_default_graph() #reset_graph()
-#reset.ops_default_graph() #reset_graph()
+tf.reset_default_graph()
+
 myModel = convLSTM.myConvLSTM(X_train, X_val,X_test, y_train, y_val, y_test, info_train, info_val, info_test)
 myModel.built_graph()
 pred_test, y_test = myModel.runGraph()
