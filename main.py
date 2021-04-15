@@ -25,7 +25,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 
 #tensorflow
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 cfg.NN_Dense['n_outputs'] = cfg.prediction['num_predictions'] ### forecasting
@@ -63,8 +64,8 @@ cfg.Modelparameter_highlevel['n_epochs'] =1000
 #cfg.Modelparameter_highlevel['dropout'] = 0.5 #0.2,
 #cfg.Modelparameter_highlevel['learningrate'] = 0.00007
 
-
-reset_graph()
+tf.reset_default_graph() #reset_graph()
+#reset.ops_default_graph() #reset_graph()
 myModel = convLSTM.myConvLSTM(X_train, X_val,X_test, y_train, y_val, y_test, info_train, info_val, info_test)
 myModel.built_graph()
 pred_test, y_test = myModel.runGraph()

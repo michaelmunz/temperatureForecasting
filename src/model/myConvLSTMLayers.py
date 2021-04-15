@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from textwrap import wrap
 import matplotlib as plt
 import numpy as np
@@ -41,7 +41,7 @@ class myConvLSTMLayers:
                           for layer in range(cfg.NN_LSTM['n_layersLSTM'])]
             cells_drop = [tf.nn.rnn_cell.DropoutWrapper(cell,input_keep_prob=lstm_keep_prob)
                           for cell in lstm_cells ]
-        multi_cell = tf.contrib.rnn.MultiRNNCell(cells_drop)
+        multi_cell = tf.nn.rnn_cell.MultiRNNCell(cells_drop)
             
         outputs, states = tf.nn.dynamic_rnn(multi_cell, x, dtype=tf.float32)
         top_layer_h_state = states[-1][1]  
