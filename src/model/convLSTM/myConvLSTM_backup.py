@@ -9,7 +9,11 @@ from sklearn.metrics import confusion_matrix
 from timeit import default_timer as timer
 import src.config as cfg
 import src.model.myConvLSTMLayers as layers
-import tensorflow as tf
+
+import tensorflow.compat.v1 as tf
+import tensorflow as tf2
+tf.disable_v2_behavior()
+
 import pickle
 
 
@@ -137,7 +141,7 @@ class myConvLSTM:
 #            self.X = tf.placeholder(tf.float32, shape=[None,cfg.NN_input['height'],cfg.NN_input['width']], name="X")
 #            self.X_reshaped = tf.reshape( self.X, shape=[-1, cfg.NN_input['height'], cfg.NN_input['width'], cfg.NN_input['channels']])     
 #            self.y = tf.placeholder(tf.int32, shape=[None,cfg.NN_Dense['n_outputs']], name="y")  
-            initializer = tf.contrib.layers.xavier_initializer()
+            initializer = tf2.initializers.GlorotUniform()
             a = math.ceil(cfg.NN_input['height']/4) * math.ceil(cfg.NN_input['width']/4) *cfg.NN_CNN['conv6_fmaps']
             ############### INITIALIZING WEIGHTS ################
             self.weights = {
